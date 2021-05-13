@@ -1,28 +1,29 @@
 import React from 'react'
-import {View,SafeAreaView,StatusBar,StyleSheet} from 'react-native'
+import {View,SafeAreaView,StatusBar,StyleSheet,Text} from 'react-native'
 import Searchbar from 'react-native-paper'
 
-const isAndroid =Platform.OS == "android";
-export const RestaurantScreen=()=>{
-    <SafeAreaView style={{flex:1, marginTop: isAndroid ? StatusBar.currentHeight : 0}}>
-      <View style={{padding:16,backgroundColor:'#fff'}}>
-         <Searchbar placeholder ='city'/>
+export const RestaurantsScreen = () => (
+  <SafeAreaView style={styles.container}>
+    <View style={styles.search}>
+      <Searchbar />
     </View>
-    <View style={{flex:1,backgroundColor:'blue'}}>
-        <Text style={styles.text}>TODO</Text>
+    <View style={styles.list}>
+      <Text>TODO</Text>
     </View>
-    </SafeAreaView>
-}
+  </SafeAreaView>
+);
+    
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: 'black',
-      alignItems: 'center',
-      justifyContent: 'center',
+      marginTop: StatusBar.currentHeight,
     },
-    text:{
-      color:'yellow',
+    search:{
+      padding: 16
+    },
+    list:{
+      flex:1,
+      backgroundColor:'blue',
       padding:16
     },
-    
   })
