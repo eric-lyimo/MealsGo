@@ -8,6 +8,7 @@ import {createBottomTabNavigator} from "@react-navigation/bottom-tabs"
 import { RestaurantsScreen } from "./src/features/restaurants/screens/restaurants.screen";
 import {SafeArea} from "./src/utils/safe-area.component"
 import { Ionicons } from "@expo/vector-icons";
+import {ContextProvider} from './src/services/restaurants/restaurants.context';
 
 const Tab =createBottomTabNavigator()
 
@@ -26,12 +27,12 @@ export default function App() {
   return (
     <>
     <ThemeProvider theme={theme}>
-       <NavigationContainer>
+      <ContextProvider>
+      <NavigationContainer>
          <Tab.Navigator
          screenOptions={({ route }) => ({
           tabBarIcon: ({ color, size }) => {
             let iconName;
-
             if (route.name === "Restaurants") {
               iconName = "md-restaurant";
             } else if (route.name === "Setting") {
@@ -53,6 +54,7 @@ export default function App() {
            <Tab.Screen name="Setting" component={SettingScreen}/>
          </Tab.Navigator>
        </NavigationContainer>
+      </ContextProvider>
     </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>
