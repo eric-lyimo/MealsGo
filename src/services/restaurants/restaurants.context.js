@@ -1,28 +1,28 @@
-import React,{createContext,useState,useEffect, Children} from 'react';
-import {RestaurantRequest,RestaurantTransform} from './restaurants.service'
-
+import React,{createContext,useState,useEffect} from 'react';
+import {restaurantRequest,restaurantTransform} from './restaurants.service'
 
 export const RestaurantContext = createContext()
 
-export const ContextProvider = (children)=>{
+export const ContextProvider = ({children})=>{
+const [restaurants,setRestaurants]=useState([]);
 const [isLoading,setIsLoading]=useState(false);
-const [restaurants,setRestaurants]=useState();
 const [error,setError] = useState(null)
 
 const retriveRestaurants=()=>{
-    setIsLoading = true,
+    setIsLoading(true)
     setTimeout(() => {
-        RestaurantRequest()
-        .then(RestaurantTransform)
+        restaurantRequest()
+        .then(restaurantTransform)
         .then((result)=>{
            setRestaurants(result) 
            setIsLoading(false)
         }).catch((err)=>{
+            setIsLoading(false)
             setError(err)
         })
-    }, 3000);
-   
+    }, 2000);  
 }
+
 useEffect(()=>{
     retriveRestaurants()
 },[])
