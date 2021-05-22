@@ -1,11 +1,11 @@
 import React,{useContext} from "react";
 import { Searchbar } from "react-native-paper";
-import { View, FlatList } from "react-native";
+import { View, FlatList,ActivityIndicator,Colors } from "react-native";
 import Styled from 'styled-components/native'
 import {RestaurantContext} from '../../../services/restaurants/restaurants.context'
 import { RestaurantInfoCard } from "../components/restaurant-info.component";
 import {SafeArea} from "../../../utils/safe-area.component"
-import {ActivityIndicator,Colors} from "react-native-paper"
+
 
 const SearchView=Styled(View) `padding: ${(props)=>props.theme.sizes[1]};`
 
